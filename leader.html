@@ -3,10 +3,10 @@
 var socket = io.connect('http://133.6.254.187:3000');
 socket.on('connect', function(msg) {
   console.log("connet");
-  document.getElementById("connectId").innerHTML = 
-    "あなたの接続ID::" + socket.socket.transport.sessid;
-  document.getElementById("type").innerHTML = 
-    "接続方式::" + socket.socket.transport.name;
+  //document.getElementById("connectId").innerHTML = 
+  //  "あなたの接続ID::" + socket.socket.transport.sessid;
+  //document.getElementById("type").innerHTML = 
+  //  "接続方式::" + socket.socket.transport.name;
 });
 
 // メッセージを受けたとき
@@ -58,9 +58,8 @@ function DisConnect() {
    </head>
   <body>
 
-  <h1>すごい避難訓練</h1>
-  <div id="connectId"></div>
-  <div id="type"></div>
+  <!--div id="connectId"></div>
+  <div id="type"></div-->
   <div id="receiveMsg"></div>
        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
@@ -69,7 +68,7 @@ function DisConnect() {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">BootLeaf</a>
+                <a class="navbar-brand" href="#">Run for Survive</a>
             </div>
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <div class="col-sm-3 col-md-4 pull-right">
@@ -81,7 +80,7 @@ function DisConnect() {
                     </form>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="#aboutModal" data-toggle="modal"><i class="fa fa-question-circle" style="color: white"></i>&nbsp;&nbsp;About</a></li>
+                    <li><a href="#aboutModal" data-toggle="modal"><i class="fa fa-question-circle" style="color: white"></i>&nbsp;&nbsp;Rule</a></li>
                     <li class="dropdown">
                         <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe" style="color: white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -91,7 +90,7 @@ function DisConnect() {
                                     <li><a href="#loginModal" data-toggle="modal"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li>
                             </ul>
                     </li>
-                    <li class="dropdown">
+                    <!--li class="dropdown">
                         <a id="downloadDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-download" style="color: white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Boroughs</a></li>
@@ -99,7 +98,7 @@ function DisConnect() {
                                 <li><a href="data/DOITT_THEATER_01_13SEPT2010.geojson" download="theaters.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Theaters</a></li>
                                 <li><a href="data/DOITT_MUSEUM_01_13SEPT2010.geojson" download="museums.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Museums</a></li>
                             </ul>
-                    </li>
+                    </li-->
                     <li><a href="https://github.com/bmcbride/bootleaf" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-github-alt" style="color: white"></i>&nbsp;&nbsp;GitHub Repo</a></li>
                 </ul>
             </div><!--/.navbar-collapse -->
@@ -119,15 +118,15 @@ function DisConnect() {
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Welcome to the BootLeaf template!</h4>
+                        <h4 class="modal-title">Rules of the Game</h4>
                     </div>
 
                     <div class="modal-body">
                          <ul id="aboutTabs" class="nav nav-tabs">
                             <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
                             <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
-                            <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
-                            <li class="dropdown">
+                            <!--li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li-->
+                            <!--li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
@@ -135,22 +134,22 @@ function DisConnect() {
                                     <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
                                     <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
                                 </ul>
-                            </li>
+                            </li-->
                         </ul>
                         <div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
                             <div class="tab-pane fade active in" id="about">
-                                <p>A simple template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a> and <a href="http://leafletjs.com/" target="_blank">Leaflet</a>.</p>
+                                <p>This game is ...</p>
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        Features
+                                        Rules
                                     </div>
                                     <ul class="list-group">
-                                        <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
-                                        <li class="list-group-item">jQuery loading of external GeoJSON files</li>
-                                        <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
-                                        <li class="list-group-item">Integration of Bootstrap tables into Leaflet popups</li>
-                                        <li class="list-group-item">Logic for minimizing layer control on small screens</li>
-                                        <li class="list-group-item">Marker icons included in layer control</li>
+                                        <li class="list-group-item">Leaders should not use mobile apps </li>
+                                        <li class="list-group-item">...</li>
+                                        <li class="list-group-item"></li>
+                                        <li class="list-group-item"></li>
+                                        <li class="list-group-item"></li>
+                                        <li class="list-group-item"></li>
                                     </ul>
                                 </div>
                             </div>

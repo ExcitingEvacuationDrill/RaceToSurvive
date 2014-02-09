@@ -408,4 +408,23 @@ $(document).ready( function(){
                     }
                 });
             }
+            // follow current location
+            var watchID;
+            var showLoc = function showLocation(position) {
+              var latitude = position.coords.latitude;
+              var longitude = position.coords.longitude;
+              map.setView([latitude,longitude],14);
+            }        
+            var locError = function errorHandler(err) {
+                if (err.code == 1) {
+                  alert("Error: Access is denied!");
+              } else if (err.code == 2) {
+                  alert("Error: Position is unavailable!");
+              }
+            }
+            if (navigator.geolocation){
+               var options = { timeout: 60000 };
+               var geoLoc = navigator.geolocation;
+               watchID = geoLoc.watchPosition(showLoc, locError, options);
+            }
 }); 
