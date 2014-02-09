@@ -52,7 +52,7 @@ function DisConnect() {
 <div class="container">
 <!-- Brand and toggle get grouped for better mobile display -->
 <div class="navbar-header">
-<a class="navbar-brand" href="#"><img src="images/logo.png" alt="Exciting Evacuation Drill"></a>
+<a class="navbar-brand" href="/edd/"><img src="images/logo.png" alt="Exciting Evacuation Drill"></a>
 </div>
 </div>
 </nav>
@@ -70,6 +70,7 @@ function DisConnect() {
   <div class="panel-heading">イベント管理</div>
   <div class="panel-body">
     <input type="text" id="message" value="">
+    <button type="button" class="btn btn-primary" onclick="SendMsg()">イベント登録</button>
   </div>
 </div>
 </div>
@@ -83,8 +84,15 @@ function DisConnect() {
   <div id="type"></div>
   <br>
   -->
-  <input type="text" id="message" value=""><br>
-  <input type="button" value="アクシデントを発生させる" onclick="SendMsg()">
+  <!-- <input type="text" id="message" value=""> -->
+  <select id="message">
+  <option value="1">火災発生</option>
+  <option value="2">橋の崩壊</option>
+  <option value="3">川の氾濫</option>
+  </select>
+  <button type="button" class="btn btn-primary" onclick="SendMsg()">アクシデント発生</button>
+
+  <!--<input type="button" value="アクシデントを発生させる" onclick="SendMsg()">-->
   <!--<input type="button" value="切断する" onclick="DisConnect()">-->
   </div>
 </div>

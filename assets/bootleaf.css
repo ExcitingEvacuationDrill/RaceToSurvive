@@ -83,4 +83,21 @@
                     display: none !important;
                 }
             }
+            .card_img {
+              width:100%;
+            }
+            .modal-card {
+              padding: 4px;
+              background: url(../img/cardbg.png) no-repeat;
+            }
+            .card-title {
+              font-weight:bolder;
+              background:#fff;
+            }
+            .card-description{
+              background-color:#fff;
+              min-height:100px;
+              padding:4px;
+            }
+
 

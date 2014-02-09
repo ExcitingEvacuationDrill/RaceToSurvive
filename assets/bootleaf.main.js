@@ -191,7 +191,7 @@ $(document).ready( function(){
               var radius = position.coords.accuracy / 2;;
               var latitude = position.coords.latitude;
               var longitude = position.coords.longitude;
-              map.setView([latitude,longitude],15);
+              map.setView([latitude,longitude],17);
               L.circle(L.latLng(latitude, longitude), radius).addTo(map);
             }        
             var locError = function errorHandler(err) {
@@ -207,3 +207,8 @@ $(document).ready( function(){
                watchID = geoLoc.watchPosition(showLoc, locError, options);
             }
 }); 
+function showCard(){
+  //$("#feature-title").html(feature.properties.NAME);
+  //$("#feature-info").html(content);
+  $("#featureCard").modal("show");
+}

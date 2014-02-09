@@ -2,7 +2,7 @@
 <script type="text/javascript">
 var socket = io.connect('http://133.6.254.187:3000');
 socket.on('connect', function(msg) {
-  console.log("connet");
+  console.log("connect");
   //document.getElementById("connectId").innerHTML = 
   //  "あなたの接続ID::" + socket.socket.transport.sessid;
   //document.getElementById("type").innerHTML = 
@@ -12,7 +12,8 @@ socket.on('connect', function(msg) {
 // メッセージを受けたとき
 socket.on('message', function(msg) {
   // メッセージを画面に表示する
-  document.getElementById("receiveMsg").innerHTML = msg.value;
+  //document.getElementById("receiveMsg").innerHTML = msg.value;
+  showCard();
 });
 
 // メッセージを送る
@@ -231,6 +232,23 @@ function DisConnect() {
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Login</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="modal fade" id="featureCard">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-card" id="feature-info">
+<div class="card">
+<h2 class="event_title card-title">火災発生</h2>
+<img src="img2/fire.png" class="card_img">
+<div class="card-description">
+<input id="area" value="覚王山" size="10">で火災が発生しました！<br/>海王山周辺
+は通行止めとなります。
+</div>
+</div>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
