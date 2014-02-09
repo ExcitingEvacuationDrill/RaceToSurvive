@@ -196,9 +196,9 @@ $(document).ready( function(){
             }        
             var locError = function errorHandler(err) {
                 if (err.code == 1) {
-                  alert("Error: Access is denied!");
+                  //alert("Error: Access is denied!");
               } else if (err.code == 2) {
-                  alert("Error: Position is unavailable!");
+                  //alert("Error: Position is unavailable!");
               }
             }
             if (navigator.geolocation){
