@@ -48,13 +48,60 @@ function DisConnect() {
   </head>
   <body>
 
-  <h1>オーガナイザー用</h1>
+<nav class="navbar navbar-inverse" role="navigation">
+<div class="container">
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+<a class="navbar-brand" href="#"><img src="images/logo.png" alt="Exciting Evacuation Drill"></a>
+</div>
+</div>
+</nav>
+
+<div class="jumbotron">
+<div class="container">
+
+  <h1>イベント管理</h1>
+
+</div>
+</div>
+
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">イベント管理</div>
+  <div class="panel-body">
+    <input type="text" id="message" value="">
+  </div>
+</div>
+</div>
+
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">アクシデント管理</div>
+  <div class="panel-body">
+  <!--
   <div id="connectId"></div>
   <div id="type"></div>
   <br>
-  <input type="text" id="message" value="">
-  <input type="button" value="メッセージを送る" onclick="SendMsg()">
-  <input type="button" value="切断する" onclick="DisConnect()">
+  -->
+  <input type="text" id="message" value=""><br>
+  <input type="button" value="アクシデントを発生させる" onclick="SendMsg()">
+  <!--<input type="button" value="切断する" onclick="DisConnect()">-->
+  </div>
+</div>
+</div>
+
+<div class="container">
+<h2>こんなことができます</h2>
+<p>実際の避難行動を想定した実践的な避難訓練をゲーム感覚で楽しく開催できます。</p>
+<h2>前日までに必要な準備</h2>
+<p>自分達の町の状況に合わせて、アクシデントをカスタマイズできます。
+どんなイベントがあるのか、どんなやり方ができるのか、過去の履歴を覗いてみてください。</p>
+<h2>当日の進め方</h2>
+<p>イベント当日は、1チーム1~5名程度になるように、人数に合わせてリーダーの人数を決めます。(リーダーは、スマートフォンでアクシデント情報を受信することになります。)
+リーダー以外の参加者にロール(役割)カードを配ります。</p>
+<p>開始のアクシデントを発生させて、イベントを開始して下さい。</p>
+<p>開始後は適宜、アクシデントを発生させます。</p>
+</div>
 
   </body>
 </html>

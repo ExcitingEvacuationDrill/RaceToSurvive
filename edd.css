@@ -31,3 +31,23 @@ a:visited.navbar-brand  {
   text-shadow: 0px 0px 0px #000;
 }
 
+.jumbotron
+{
+  background-color: #f6bb00;
+}
+
+h1.jumbotron 
+{
+  color: #00f;
+}
+
+a
+{
+  color: #00f;
+}
+
+a:link, a:visited
+{
+  color: #00f;
+  
+}
