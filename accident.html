@@ -1,0 +1,155 @@
+<html>
+<head>
+<style type="text/css">
+body {
+    font-family: 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
+div.card {
+  margin: 10px;
+  width: 420px;
+  height: 600px;
+  background-color: #e8e8e8;
+  border-style: solid;
+  border-width: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-image: url(img2/event_back.jpg) ;
+}
+
+h2.card_title {
+  padding-left: 10px;
+  padding-right: 10px;
+  border-style: solid;
+  border-width: 2px;
+  background: #f8f8f8;
+  text-shadow: #999 2px 2px 2px;
+  font-variant: small-caps;
+
+}
+
+h2.event_title {
+  color: red;
+}
+
+h2.role_title {
+  color: blue;
+}
+
+
+img.card_img {
+  width: 400px;
+  height: 260px;
+  //padding: 3px;
+  //border-style: solid;
+  //border-width: 1px;
+  //border-color: gray;
+}
+
+div.description {
+  padding: 10px;
+  width: 380px;
+  height: 200px;
+  font-size: 18pt;
+  background-color: #f99;
+}
+
+</style>
+</head>
+<body>
+
+<h2>アクシデントカード一覧</h2>
+
+<div class="card">
+<h2 class="event_title card_title">Event 火災</h2>
+<img src="img/fire.png" class="card_img" />
+<div class="description">
+<input id="area" value="覚王山" size="10" />で火災が発生しました！
+</div>
+</div>
+
+<div class="card">
+<h2 class="event_title card_title">Event 橋の崩壊</h2>
+<img src="img/bridge.png" class="card_img" />
+<div class="description">
+<input id="area" value="千種橋" size="10" />が崩壊しました！通行できません。
+</div>
+</div>
+
+
+<div class="card">
+<h2 class="event_title card_title">Event 川の氾濫</h2>
+<img src="img/flood.png" class="card_img" />
+<div class="description">
+<input id="area" value="庄内川" size="10" />の堤防が決壊しました！
+</div>
+</div>
+
+
+
+
+<div class="card">
+<h2 class="event_title card_title">Event 道路</h2>
+<img src="img/tree.png" class="card_img" />
+<div class="description">
+大きな木が倒れて<input id="area" value="どんぐり保育園の前の道" size="20" /> をふさいでいます。
+特に、車いすの人には大きな障害です。
+</div>
+</div>
+
+<div class="card">
+<h2 class="event_title card_title">Event 道路の浸水</h2>
+<img src="img/suidoukan.jpg" class="card_img" />
+<div class="description">
+前方の道路で水道管が破裂した模様。道路が冠水。高架下など低い部分は通行できません。
+</div>
+</div>
+
+<!--
+<div class="card">
+<h2 class="event_title card_title">Event 火災</h2>
+<img src="img/fire.png" class="card_img" />
+<div class="description">
+前方から火の手。進路変更が必要。
+</div>
+</div>
+-->
+
+<div class="card">
+<h2 class="event_title card_title">Event 爆発音</h2>
+<img src="img/explosion.png" class="card_img" />
+<div class="description">
+<input />の方向で爆発音！詳細は不明だが、
+車か何かが爆発したらしい。
+</div>
+</div>
+
+
+<div class="card">
+<h2 class="event_title card_title">Event 怪我</h2>
+<img src="img/foot.jpg" class="card_img" />
+<div class="description">
+メンバーの1人が足を挫きました！1分あたり<input value="50" size="10" />mしか進めません。
+</div>
+</div>
+
+<div class="card">
+<h2 class="event_title card_title">Event 津波</h2>
+<img src="img/tsunami.jpg" class="card_img" />
+<div class="description">
+津波が堤防を超えました！今いる<input value="名古屋競馬場" size="10" />にはあと<input value="数分" size="10">で到達します。急いで高台へ避難して下さい！
+</div>
+</div>
+
+<div class="card">
+<h2 class="event_title card_title">Event 余震</h2>
+<img src="img/yoshin.png" class="card_img" />
+<div class="description">
+強い余震が発生しました！落石 、建物倒壊情報が更新されます。倒壊真近だった建物が倒壊します。ガラスが散乱しています。
+</div>
+</div>
+
+
+
+
+</body></html>

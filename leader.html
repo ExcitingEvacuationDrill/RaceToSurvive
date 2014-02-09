@@ -13,7 +13,8 @@ socket.on('connect', function(msg) {
 socket.on('message', function(msg) {
   // メッセージを画面に表示する
   //document.getElementById("receiveMsg").innerHTML = msg.value;
-  showCard();
+  console.log(msg);
+  showCard(msg.value);
 });
 
 // メッセージを送る
@@ -242,9 +243,9 @@ function DisConnect() {
                 <div class="modal-content">
                     <div class="modal-card" id="feature-info">
 <div class="card">
-<h2 class="event_title card-title">火災発生</h2>
-<img src="img2/fire.png" class="card_img">
-<div class="card-description">
+<h2 id="card-title" class="event_title card-title">火災発生</h2>
+<img id="card-image" src="img2/fire.png" class="card_img">
+<div id="card-description" class="card-description">
 <input id="area" value="覚王山" size="10">で火災が発生しました！<br/>海王山周辺
 は通行止めとなります。
 </div>

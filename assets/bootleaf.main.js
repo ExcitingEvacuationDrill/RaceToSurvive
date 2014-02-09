@@ -207,8 +207,31 @@ $(document).ready( function(){
                watchID = geoLoc.watchPosition(showLoc, locError, options);
             }
 }); 
-function showCard(){
-  //$("#feature-title").html(feature.properties.NAME);
-  //$("#feature-info").html(content);
+function showCard(value){
+  var title = "";
+  var img = "";
+  var desc = "";
+  switch (value){
+    case "1":
+      title = "火災発生";
+      img = "img2/fire.png";
+      desc = "覚王山で火災が発生しました！<br/>覚王山周辺は通行止めとなります 。";
+      break;
+    case "2":
+      title = "橋の崩壊";
+      img = "img2/bridge.png";
+      desc = "千種橋が崩壊しました！千種橋は通行できません。";
+      break;
+    case "3":
+      title = "川の氾濫";
+      img = "img2/flood.png";
+      desc = "庄内川の堤防が決壊しました！<br/>庄内川より南は通行できません。";
+      break;
+    default:
+      return;
+  }
+  $("#card-title").html(title);
+  $("#card-image").attr("src",img);
+  $("#card-description").html(desc);
   $("#featureCard").modal("show");
 }
