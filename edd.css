@@ -1,0 +1,33 @@
+
+.navbar-inverse {
+  background-image: -moz-linear-gradient(top, #f6bb00, #f6bb00);
+  background-image: -ms-linear-gradient(top, #f6bb00, #f6bb00);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f6bb00), to(#f6bb00));
+  background-image: -webkit-linear-gradient(top, #f6bb00, #f6bb00);
+  background-image: -o-linear-gradient(top, #f6bb00, #f6bb00);
+  background-image: linear-gradient(top, #f6bb00, #f6bb00);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'f6bb00, endColorstr='#'f6bb00, GradientType=0);
+  border: 0px none #000;
+}
+
+a:link.navbar-brand  {
+  color: #000;
+  text-shadow: 0px 0px 0px #000;
+  font-size: 30px;
+}
+
+a:visited.navbar-brand  {
+  color: #000;
+  text-shadow: 0px 0px 0px #000;
+}
+
+a:hover.navbar-brand  {
+  color: #000;
+  text-shadow: 0px 0px 0px #000;
+}
+
+a:visited.navbar-brand  {
+  color: #000;
+  text-shadow: 0px 0px 0px #000;
+}
+

@@ -1,0 +1,86 @@
+            html, body, #map {
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+            body {
+                padding-top: 50px;
+            }
+            input[type="radio"], input[type="checkbox"] {
+                margin: 0;
+            }
+            #loading {
+                position: absolute;
+                width: 220px;
+                height: 19px;
+                top: 50%;
+                left: 50%;
+                margin: -10px 0 0 -110px;
+                z-index: 20001;
+            }
+            .leaflet-control-layers label {
+                font-weight: normal;
+                margin-bottom: 0px;
+            }
+            .table {
+                margin-bottom: 0px;
+            }
+            .navbar .navbar-brand {
+                font-weight: bold;
+                font-size: 25px;
+                color: white;
+            }
+            .navbar-collapse.in {
+                overflow-y: hidden;
+            }
+            .tt-hint, .tt-query {
+                display: block;
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                font-size: 14px;
+                border-radius: 4px;
+            }
+            .typeahead-header {
+                margin: 0 5px 5px 5px;
+                padding: 3px 0;
+                border-bottom: 2px solid #333;
+            }
+            .tt-suggestion + .tt-suggestion {
+                border-top: 1px solid #ccc;
+            }
+            .leaflet-control-layers-expanded {
+                opacity: 0.9;
+            }
+            .leaflet-popup-content {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            .leaflet-popup-content-wrapper {
+                border-radius: 5px;
+            }
+            @media (max-width: 992px) {
+                .navbar .navbar-brand {
+                    font-size: 18px;
+                }
+            }
+            @media (max-width: 767px){
+                .url-break {
+                    word-break: break-all;
+                    word-break: break-word;
+                    -webkit-hyphens: auto;
+                    hyphens: auto;
+                }
+            }
+            /* Print Handling */
+            @media print {
+                .navbar {
+                    display: none !important;
+                }
+                .leaflet-control-container {
+                    display: none !important;
+                }
+            }
+

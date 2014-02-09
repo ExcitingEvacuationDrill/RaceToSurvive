@@ -1,0 +1,255 @@
+<script src="socket.io.js"></script>
+<script type="text/javascript">
+var socket = io.connect('http://133.6.254.187:3000');
+socket.on('connect', function(msg) {
+  console.log("connet");
+  document.getElementById("connectId").innerHTML = 
+    "あなたの接続ID::" + socket.socket.transport.sessid;
+  document.getElementById("type").innerHTML = 
+    "接続方式::" + socket.socket.transport.name;
+});
+
+// メッセージを受けたとき
+socket.on('message', function(msg) {
+  // メッセージを画面に表示する
+  document.getElementById("receiveMsg").innerHTML = msg.value;
+});
+
+// メッセージを送る
+function SendMsg() {
+  var msg = document.getElementById("message").value;
+  // メッセージを発射する
+  socket.emit('message', { value: msg });
+}
+// 切断する
+function DisConnect() {
+  var msg = socket.socket.transport.sessid + "は切断しました。";
+  // メッセージを発射する
+  socket.emit('message', { value: msg });
+  // socketを切断する
+  socket.disconnect();
+}
+</script>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>リーダー用ページ</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+        <!-- Core CSS -->
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/typeahead.js/typeahead.js-bootstrap.css" rel="stylesheet" type="text/css"> <!--https://github.com/jharding/typeahead.js-bootstrap.css-->
+        <link href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" rel="stylesheet" type="text/css">
+        <link href="assets/bootleaf.css" rel="stylesheet" type="text/css">
+
+<!-- Optional theme -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="edd.css">
+        <script type="text/javascript" src="assets/typeahead.js/typeahead.min.js"></script> <!--https://github.com/twitter/typeahead.js/-->
+        <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+        <script type="text/javascript" src="assets/bootleaf.main.js"></script>
+   </head>
+  <body>
+
+  <h1>すごい避難訓練</h1>
+  <div id="connectId"></div>
+  <div id="type"></div>
+  <div id="receiveMsg"></div>
+       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">BootLeaf</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-collapse">
+                <div class="col-sm-3 col-md-4 pull-right">
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="input-group">
+                            <input id="searchbox" type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#aboutModal" data-toggle="modal"><i class="fa fa-question-circle" style="color: white"></i>&nbsp;&nbsp;About</a></li>
+                    <li class="dropdown">
+                        <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe" style="color: white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="map.fitBounds(boroughs.getBounds()); return false;"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
+                                <li><a href="#legendModal" data-toggle="modal"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Show Legend</a></li>
+                                <li class="divider hidden-xs"></li>
+                                    <li><a href="#loginModal" data-toggle="modal"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li>
+                            </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a id="downloadDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-download" style="color: white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Boroughs</a></li>
+                                <li><a href="data/subways.geojson" download="subways.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Subway Lines</a></li>
+                                <li><a href="data/DOITT_THEATER_01_13SEPT2010.geojson" download="theaters.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Theaters</a></li>
+                                <li><a href="data/DOITT_MUSEUM_01_13SEPT2010.geojson" download="museums.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Museums</a></li>
+                            </ul>
+                    </li>
+                    <li><a href="https://github.com/bmcbride/bootleaf" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-github-alt" style="color: white"></i>&nbsp;&nbsp;GitHub Repo</a></li>
+                </ul>
+            </div><!--/.navbar-collapse -->
+        </div>
+
+        <div id="map"></div>
+        <div id="loading" style="display:block;">
+            <div class="loading-indicator">
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-info" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="aboutModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Welcome to the BootLeaf template!</h4>
+                    </div>
+
+                    <div class="modal-body">
+                         <ul id="aboutTabs" class="nav nav-tabs">
+                            <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
+                            <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
+                            <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
+                                    <li><a href="#subway-lines-tab" data-toggle="tab">Subway Lines</a></li>
+                                    <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
+                                    <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
+                            <div class="tab-pane fade active in" id="about">
+                                <p>A simple template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a> and <a href="http://leafletjs.com/" target="_blank">Leaflet</a>.</p>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Features
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
+                                        <li class="list-group-item">jQuery loading of external GeoJSON files</li>
+                                        <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
+                                        <li class="list-group-item">Integration of Bootstrap tables into Leaflet popups</li>
+                                        <li class="list-group-item">Logic for minimizing layer control on small screens</li>
+                                        <li class="list-group-item">Marker icons included in layer control</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade text-danger" id="disclaimer">
+                                <p>The data provided on this site is for informational and planning purposes only.</p>
+                                <p>Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
+                            </div>
+                            <div class="tab-pane fade" id="contact">
+                                <form id="contact-form">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="name">Name:</label>
+                                            <input type="text" class="form-control" id="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="text" class="form-control" id="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="comment">Comment:</label>
+                                            <textarea class="form-control" rows="3" id="comment"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="boroughs-tab">
+                                <p>Borough data courtesy of <a href="http://www.nyc.gov/html/dcp/html/bytes/meta_dis_nyboroughwi.shtml" target="_blank">New York City Department of City Planning</a></p>
+                            </div>
+                            <div class="tab-pane fade" id="subway-lines-tab">
+                                <p><a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks" target="_blank">MTA Subway data</a> courtesy of the <a href="http://www.urbanresearch.org/about/cur-components/cuny-mapping-service" target="_blank">CUNY Mapping Service at the Center for Urban Research</a></p>
+                            </div>
+                            <div class="tab-pane fade" id="theaters-tab">
+                                <p>Theater data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
+                            </div>
+                            <div class="tab-pane fade" id="museums-tab">
+                                <p>Museum data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Museums-and-Galleries/sat5-adpb" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="modal fade" id="legendModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Map Legend</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Map Legend goes here...</p>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="modal fade" id="loginModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="contact-form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="name">Username:</label>
+                                    <input type="text" class="form-control" id="username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Password:</label>
+                                    <input type="password" class="form-control" id="password">
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Login</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="modal fade" id="featureModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title text-primary" id="feature-title"></h4>
+                    </div>
+                    <div class="modal-body" id="feature-info">
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+  </body>
+</html>

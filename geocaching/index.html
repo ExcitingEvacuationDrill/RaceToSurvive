@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.14.1/build/cssreset/cssreset-min.css">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=no;" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+
+<style type="text/css">
+.page{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+	background:pink;
+}
+
+.box{
+	display:-webkit-box;
+}
+.fill{
+	-webkit-box-flex:1;
+}
+
+.vertical{
+	-webkit-box-orient:vertical;
+}
+.horizontal{
+	-webkit-box-orient:horizontal;
+}
+.center{
+	-webkit-box-align:center;
+	-webkit-box-pack:center;
+}
+
+
+h1{
+	font-size:24pt;
+}
+</style>
+</head>
+
+<body>
+
+<div id="page1" class="page box horizontal center" style="display:none">
+<h1 id="startbutton">Geocaching<h1>
+</div>
+
+
+<div id="page2" class="page box horizontal center" style="display:none">
+	<div id="map" class="">map</div>
+</div>
+
+</body>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="http://js.api.olp.yahooapis.jp/OpenLocalPlatform/V1/jsapi?appid=multifind"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#startbutton').bind('click', function(){
+		$('#page2').show();
+		$('#page1').hide();
+	});
+
+	var ymap = new Y.Map("map", {"logoControl": false});
+	ymap.drawMap(new Y.LatLng(35.66572, 139.73100), 17, Y.LayerSetId.NORMAL);
+
+	$('#page1').show();
+
+});
+</script>
+
+
+
+</html>
+
